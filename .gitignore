@@ -1,0 +1,34 @@
+# 常见忽略文件
+*.[oO]
+*.[dD]
+.*
+*$*
+*.bin
+
+# 常见忽略文件夹
+.*/
+
+# -------------------------
+# keil 
+*.uvguix.*
+*.build_log.htm
+*_Project.dep
+JLinkLog.txt
+JModbusLog.txt
+
+BM-R4V-PROGRAM/R4V-AT/BM-R4V-BOOT/project/mdk_v5/objects/
+BM-R4V-PROGRAM/R4V-AT/BM-R4V-FIRM/project/MDK_V5/objects/
+BM-R4V-PROGRAM/R4V-TL/boot_me/
+BM-R4V-PROGRAM/R4V-TL/firm_me/
+BM-R4V-JIG/测试架源码/jig_host_meta/
+
+build.log
+
+# clion
+cmake-build-debug/
+
+# 不忽略的文件
+!.gitignore
+!.vscode/
+!.doc/
+!.keep

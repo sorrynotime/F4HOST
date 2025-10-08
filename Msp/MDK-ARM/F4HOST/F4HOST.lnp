@@ -5,7 +5,6 @@
 "f4host\gpio.o"
 "f4host\tim.o"
 "f4host\usart.o"
-"f4host\usb_otg.o"
 "f4host\stm32f4xx_it.o"
 "f4host\stm32f4xx_hal_msp.o"
 "f4host\stm32f4xx_hal_tim.o"
@@ -24,10 +23,8 @@
 "f4host\stm32f4xx_hal.o"
 "f4host\stm32f4xx_hal_exti.o"
 "f4host\stm32f4xx_hal_uart.o"
-"f4host\stm32f4xx_hal_hcd.o"
-"f4host\stm32f4xx_ll_usb.o"
 "f4host\system_stm32f4xx.o"
---strict --scatter "F4HOST\F4HOST.sct"
+--library_type=microlib --strict --scatter "F4HOST\F4HOST.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list "F4HOST.map" -o F4HOST\F4HOST.axf

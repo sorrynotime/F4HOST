@@ -853,9 +853,9 @@
           </GroupOption>
           <Files>
             <File>
-              <FileName>usbh_conf.c</FileName>
+              <FileName>usbh_platform.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../USB_HOST/Target/usbh_conf.c</FilePath>
+              <FilePath>../USB_HOST/Target/usbh_platform.c</FilePath>
               <FileOption>
                 <CommonProperty>
                   <UseCPPCompiler>2</UseCPPCompiler>
@@ -909,9 +909,9 @@
               </FileOption>
             </File>
             <File>
-              <FileName>usbh_platform.c</FileName>
+              <FileName>usbh_conf.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../USB_HOST/Target/usbh_platform.c</FilePath>
+              <FilePath>../USB_HOST/Target/usbh_conf.c</FilePath>
               <FileOption>
                 <CommonProperty>
                   <UseCPPCompiler>2</UseCPPCompiler>

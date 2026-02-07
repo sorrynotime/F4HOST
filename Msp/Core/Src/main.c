@@ -25,6 +25,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "host_mouse.h"
 #include "qthezg.h"
 /* USER CODE END Includes */
 

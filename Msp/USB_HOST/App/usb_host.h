@@ -62,20 +62,6 @@ extern "C"
         APPLICATION_DISCONNECT
     } ApplicationTypeDef;
 
-    typedef struct
-    {
-        uint8_t button_left;   // 左键
-        uint8_t button_right;  // 右键
-        uint8_t button_middle; // 中键
-        uint8_t button_side1;  // 侧键1
-        uint8_t button_side2;  // 侧键2
-
-        int16_t x;        // X轴位移（有符号）
-        int16_t y;        // Y轴位移（有符号）
-        int8_t wheel;     // 滚轮（部分鼠标无此字段）
-        uint8_t is_valid; // 数据是否有效
-    } Mouse_Data_t;
-
     /** @defgroup USBH_HOST_Exported_FunctionsPrototype USBH_HOST_Exported_FunctionsPrototype
      * @brief Declaration of public functions for Usb host.
      * @{
@@ -91,7 +77,7 @@ extern "C"
     /**
      * @}
      */
-    void USBH_UserLoop(void);
+
     /**
      * @}
      */

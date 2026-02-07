@@ -1,5 +1,6 @@
 --cpu=Cortex-M4.fp.sp
 "f4host\qthezg.o"
+"f4host\host_mouse.o"
 "f4host\startup_stm32f401xc.o"
 "f4host\main.o"
 "f4host\gpio.o"

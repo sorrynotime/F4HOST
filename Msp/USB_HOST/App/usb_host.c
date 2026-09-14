@@ -22,7 +22,7 @@
 
 #include "usb_host.h"
 #include "usbh_core.h"
-#include "usbh_hid.h"
+#include "host_gamepad.h"
 
 /* USER CODE BEGIN Includes */
 
@@ -76,7 +76,11 @@ void MX_USB_HOST_Init(void)
     {
         Error_Handler();
     }
-    if (USBH_RegisterClass(&hUsbHostFS, USBH_HID_CLASS) != USBH_OK)
+    if (USBH_RegisterClass(&hUsbHostFS, &GamepadHID_Class) != USBH_OK)
+    {
+        Error_Handler();
+    }
+    if (USBH_RegisterClass(&hUsbHostFS, &GamepadRaw_Class) != USBH_OK)
     {
         Error_Handler();
     }
@@ -103,6 +107,7 @@ void MX_USB_HOST_Process(void)
 static void USBH_UserProcess(USBH_HandleTypeDef *phost, uint8_t id)
 {
     /* USER CODE BEGIN CALL_BACK_1 */
+    (void)phost;
     switch (id)
     {
     case HOST_USER_SELECT_CONFIGURATION:
@@ -110,6 +115,7 @@ static void USBH_UserProcess(USBH_HandleTypeDef *phost, uint8_t id)
 
     case HOST_USER_DISCONNECTION:
         Appli_state = APPLICATION_DISCONNECT;
+        Gamepad_Reset();
         break;
 
     case HOST_USER_CLASS_ACTIVE:

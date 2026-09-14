@@ -671,30 +671,37 @@ USBH_StatusTypeDef USBH_Process(USBH_HandleTypeDef *phost)
       {
         phost->pActiveClass = NULL;
 
-        for (idx = 0U; idx < USBH_MAX_NUM_SUPPORTED_CLASS; idx++)
+        /* A wireless receiver can place HID after a vendor/audio interface.
+         * Try registered classes in priority order across all parsed interfaces.
+         * Init performs endpoint/subclass filtering; a rejected class may fall back.
+         */
+        for (idx = 0U; idx < phost->ClassNumber && idx < USBH_MAX_NUM_SUPPORTED_CLASS; idx++)
         {
-          if (phost->pClass[idx]->ClassCode == phost->device.CfgDesc.Itf_Desc[0].bInterfaceClass)
+          uint8_t interface_index;
+          if (phost->pClass[idx] == NULL) continue;
+          for (interface_index = 0U; interface_index < USBH_MAX_NUM_INTERFACES; ++interface_index)
+          {
+            if (phost->device.CfgDesc.Itf_Desc[interface_index].bLength == USB_INTERFACE_DESC_SIZE &&
+                phost->pClass[idx]->ClassCode == phost->device.CfgDesc.Itf_Desc[interface_index].bInterfaceClass)
+              break;
+          }
+          if (interface_index < USBH_MAX_NUM_INTERFACES)
           {
             phost->pActiveClass = phost->pClass[idx];
-            break;
+            if (phost->pActiveClass->Init(phost) == USBH_OK) break;
+            if (phost->pActiveClass->pData != NULL)
+              (void)phost->pActiveClass->DeInit(phost);
+            phost->pActiveClass = NULL;
           }
         }
 
         if (phost->pActiveClass != NULL)
         {
-          if (phost->pActiveClass->Init(phost) == USBH_OK)
-          {
             phost->gState = HOST_CLASS_REQUEST;
             USBH_UsrLog("%s class started.", phost->pActiveClass->Name);
 
             /* Inform user that a class has been activated */
             phost->pUser(phost, HOST_USER_CLASS_SELECTED);
-          }
-          else
-          {
-            phost->gState = HOST_ABORT_STATE;
-            USBH_UsrLog("Device not supporting %s class.", phost->pActiveClass->Name);
-          }
         }
         else
         {

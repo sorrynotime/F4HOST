@@ -341,7 +341,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F401xC</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../../Lib/zg;../USB_HOST/App;../USB_HOST/Target;../Middlewares/ST/STM32_USB_Host_Library/Core/Inc;../Middlewares/ST/STM32_USB_Host_Library/Class/HID/Inc;..\..\Lib\host_mouse</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../../Lib/zg;../USB_HOST/App;../USB_HOST/Target;../Middlewares/ST/STM32_USB_Host_Library/Core/Inc;../Middlewares/ST/STM32_USB_Host_Library/Class/HID/Inc;..\..\Lib\host_mouse;../../Lib/host_gamepad</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -400,6 +400,11 @@
               <FileName>host_mouse.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\Lib\host_mouse\host_mouse.c</FilePath>
+              <FileOption>
+                <CommonProperty>
+                  <IncludeInBuild>0</IncludeInBuild>
+                </CommonProperty>
+              </FileOption>
             </File>
           </Files>
         </Group>
@@ -1490,6 +1495,26 @@
                   </Cads>
                 </FileArmAds>
               </FileOption>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Gamepad</GroupName>
+          <Files>
+            <File>
+              <FileName>gamepad_hid.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../../Lib/host_gamepad/gamepad_hid.c</FilePath>
+            </File>
+            <File>
+              <FileName>host_gamepad.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../../Lib/host_gamepad/host_gamepad.c</FilePath>
+            </File>
+            <File>
+              <FileName>gamepad_app.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../../Lib/host_gamepad/gamepad_app.c</FilePath>
             </File>
           </Files>
         </Group>

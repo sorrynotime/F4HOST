@@ -32,7 +32,8 @@ extern "C"
 #include "stm32f4xx_hal.h"
 
     /* USER CODE BEGIN INCLUDE */
-
+    #include "usbh_core.h"
+    extern USBH_HandleTypeDef hUsbHostFS;
     /* USER CODE END INCLUDE */
 
     /** @addtogroup USBH_OTG_DRIVER

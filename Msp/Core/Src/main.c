@@ -25,7 +25,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "host_mouse.h"
+#include "host_gamepad.h"
 #include "qthezg.h"
 /* USER CODE END Includes */
 
@@ -120,7 +120,7 @@ int main(void)
         MX_USB_HOST_Process();
 
         /* USER CODE BEGIN 3 */
-        USBH_UserLoop();
+        Gamepad_AppProcess(&hUsbHostFS);
     }
     /* USER CODE END 3 */
 }

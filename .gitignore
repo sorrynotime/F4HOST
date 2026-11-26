@@ -9,7 +9,6 @@
 
 # Linker output
 *.ilk
-*.map
 *.exp
 
 # Precompiled Headers
@@ -34,7 +33,6 @@
 *.app
 *.i*86
 *.x86_64
-*.hex
 
 # Debug files
 *.dSYM/
@@ -57,3 +55,12 @@ dkms.conf
 Msp/MDK-ARM/RTE/*
 
 .build/*
+
+# Keil 构建输出：仅保留 bin/hex/axf/map，其余格式忽略
+Msp/MDK-ARM/F4HOST/**
+!Msp/MDK-ARM/F4HOST/
+!Msp/MDK-ARM/F4HOST/**/
+!Msp/MDK-ARM/F4HOST/**/*.bin
+!Msp/MDK-ARM/F4HOST/**/*.hex
+!Msp/MDK-ARM/F4HOST/**/*.axf
+!Msp/MDK-ARM/F4HOST/**/*.map
